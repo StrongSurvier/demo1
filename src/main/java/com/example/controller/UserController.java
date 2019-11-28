@@ -28,4 +28,11 @@ public class UserController {
         userService.add(user);
         return user.toString();
     }
+    
+    @RequestMapping("/del/id")
+    @ResponseBody
+    public String add(@PathVariable int id){
+        userService.del(id);
+        return "success";
+    }
 }
