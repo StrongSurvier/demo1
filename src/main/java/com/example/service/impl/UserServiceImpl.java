@@ -17,6 +17,11 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public void del(int id) {
+        userMapper.del(id);
+    }
+
+    @Override
     public void add(User user) {
         userMapper.add(user);
     }

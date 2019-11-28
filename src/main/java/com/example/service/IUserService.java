@@ -8,4 +8,6 @@ public interface IUserService {
     List<User> findAll();
 
     void add(User user);
+
+    void del(int id);
 }
