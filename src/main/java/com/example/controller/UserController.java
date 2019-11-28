@@ -31,6 +31,7 @@ public class UserController {
     @ResponseBody
     public String add(@PathVariable("id") int id){
         userService.del(id);
+        System.out.println(id);
         return "success";
     }
 }
