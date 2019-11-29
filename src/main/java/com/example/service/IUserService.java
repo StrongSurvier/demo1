@@ -10,4 +10,6 @@ public interface IUserService {
     void add(User user);
 
     void del(int id);
+
+    void batchDel(Integer[] ids);
 }

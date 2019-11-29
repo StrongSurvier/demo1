@@ -22,6 +22,13 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public void batchDel(Integer[] ids) {
+        for (int i = 0; i <ids.length; i++) {
+            userMapper.del(ids[i]);
+        }
+    }
+
+    @Override
     public void add(User user) {
         userMapper.add(user);
     }

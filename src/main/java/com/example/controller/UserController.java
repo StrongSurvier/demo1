@@ -33,4 +33,20 @@ public class UserController {
         userService.del(id);
         return "success";
     }
+
+    @RequestMapping("/del")
+//    @ResponseBody
+    public String batchDel(@RequestParam("ids[]") Integer[] ids){
+        userService.batchDel(ids);
+        return "success";
+    }
+
+    @RequestMapping("/batchAdd")
+    public String batchInsert(@RequestBody User user){
+        for (int i = 0; i <10 ; i++) {
+            user.setAge(user.getAge()+1);
+            userService.add(user);
+        }
+        return "add success";
+    }
 }
