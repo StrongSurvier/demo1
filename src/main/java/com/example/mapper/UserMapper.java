@@ -13,7 +13,7 @@ public interface UserMapper {
     @Select("select * from user")
     List<User> findAll();
 
-    @Insert("insert into user values(#{id},#{name},#{age})")
+    @Insert("insert into user values(#{id},#{name},#{age},#{idcard})")
     void add(User user);
     @Delete("delete from user where id=#{id}")
     void del(int id);

@@ -7,11 +7,13 @@ public class User implements Serializable {
     private Integer id;
     private String name;
     private Integer age;
+    private String idcard;
 
-    public User(Integer id, String name, Integer age) {
+    public User(Integer id, String name, Integer age, String idcard) {
         this.id = id;
         this.name = name;
         this.age = age;
+        this.idcard = idcard;
     }
 
     public User() {
@@ -41,19 +43,12 @@ public class User implements Serializable {
         this.age = age;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id) &&
-                Objects.equals(name, user.name) &&
-                Objects.equals(age, user.age);
+    public String getIdcard() {
+        return idcard;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, age);
+    public void setIdcard(String idcard) {
+        this.idcard = idcard;
     }
 
     @Override
@@ -62,7 +57,24 @@ public class User implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
+                ", idcard='" + idcard + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) &&
+                Objects.equals(name, user.name) &&
+                Objects.equals(age, user.age) &&
+                Objects.equals(idcard, user.idcard);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, age, idcard);
     }
 }
 

@@ -3,9 +3,10 @@ package com.example.controller;
 import com.example.domain.User;
 import com.example.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DecimalFormat;
 import java.util.List;
 @RestController
 @RequestMapping("/user")
@@ -44,7 +45,12 @@ public class UserController {
     @RequestMapping("/batchAdd")
     public String batchInsert(@RequestBody User user){
         for (int i = 0; i <10 ; i++) {
-            user.setAge(user.getAge()+1);
+            String idcard = user.getIdcard();
+            String[] split = idcard.split("-");
+            int end = Integer.parseInt(split[2]);
+            DecimalFormat df=new DecimalFormat("000");
+            String format = df.format(end + 1);
+            user.setIdcard(split[0]+"-"+split[1]+"-"+format);
             userService.add(user);
         }
         return "add success";
